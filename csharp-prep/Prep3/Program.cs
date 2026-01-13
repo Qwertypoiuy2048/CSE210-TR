@@ -30,7 +30,7 @@ class Program
                 {
                     Console.WriteLine("Higher");
                 }
-                guesses = guesses +1;
+                guesses++;
             } while (guess != target);
             Console.Write("You guessed it in ");
             Console.Write(guesses);
