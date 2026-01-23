@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning02 World!");
+        Console.WriteLine("Hello Learning02 World!\n");
 
         Job job1 = new Job();
 
@@ -13,7 +13,7 @@ class Program
         job1._startYear = 2019;
         job1._endYear = 2022;
 
-        job1.Display();
+        // job1.Display();
 
         Job job2 = new Job();
 
@@ -22,7 +22,13 @@ class Program
         job2._startYear = 2022;
         job2._endYear = 2026;
 
-        job2.Display();
+        // job2.Display();
 
+        Resume resume1 = new Resume();
+        resume1._name = "Evan C";
+        resume1._Jobs.Add(job1);
+        resume1._Jobs.Add(job2);
+
+        resume1.Display();
     }
 }
