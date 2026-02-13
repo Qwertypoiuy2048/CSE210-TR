@@ -14,6 +14,6 @@ public class Ref
 
     public string GetRef()
     {
-        return $"{_book} {_chapter}:{_verse}";
+        return $"{_book} {_chapter}:{_verse} - ";
     }
 }
