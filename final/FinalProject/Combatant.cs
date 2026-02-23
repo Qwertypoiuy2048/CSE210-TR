@@ -34,6 +34,10 @@ public class Combatant
     {
         _initiative = value;
     }
+    public int GetInitiative()
+    {
+        return _initiative;
+    }
 
 
 

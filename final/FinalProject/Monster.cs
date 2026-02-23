@@ -15,20 +15,11 @@ public class Monster : Combatant
         }
         totalHP += hpBonus;
 
-        SetHP(totalHP);
+        totalHP = Math.Max(totalHP, 1); // Ensure HP is at least 1
+        _HP = totalHP;
         rollInitiative();
     }
 
-
-    public int GetHP()
-    {
-        return _HP;
-    }
-
-    public void SetHP(int HP)
-    {
-        _HP = HP;
-    }
 
 
     public void rollInitiative()
@@ -38,6 +29,6 @@ public class Monster : Combatant
 
     public string GetInfo()
     {
-        return GetInfo() + $"\nType: {GetName()}\nHP: {_HP}";
+        return GetInfo() + $"\nType: {GetName()}\nHP: {_HP}\nInitiative: {GetInitiative()}";
     }
 }
