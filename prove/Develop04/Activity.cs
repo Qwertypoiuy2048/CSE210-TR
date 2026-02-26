@@ -13,6 +13,7 @@ public class Activity
 
     public void Start()
     {
+        Console.Clear();
         Console.WriteLine($"Starting {_name}...");
         Console.WriteLine(_description);
         Console.Write("Enter the duration of the activity in seconds: ");

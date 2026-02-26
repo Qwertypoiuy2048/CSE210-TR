@@ -36,14 +36,16 @@ public class Reflection : Activity
         int elapsedTime = 0;
 
         string prompt = _prompts[_random.Next(_prompts.Count)];
-        Console.WriteLine(prompt,"\n");
+        Console.Write(prompt);
+        Animate(5);
+        Console.WriteLine();
 
         while (elapsedTime < duration)
         {
             string question = _questions[_random.Next(_questions.Count)];
             Console.WriteLine(question);
-            Animate(3);
-            elapsedTime += 3;
+            Animate(6);
+            elapsedTime += 6;
         }
     }
 }

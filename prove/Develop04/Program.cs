@@ -76,15 +76,16 @@ class Program
         Console.Clear();
         
         
-        Breathing breathingActivity = new Breathing("Breathing", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
-        Reflection reflectionActivity = new Reflection("Reflection", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
-        Listing listingActivity = new Listing("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+        Breathing breathingActivity = new Breathing("Breathing", "\nThis activity will help you relax by walking your through breathing in and out \nslowly. Clear your mind and focus on your breathing.\n");
+        Reflection reflectionActivity = new Reflection("Reflection", "\nThis activity will help you reflect on times in your life when you have \nshown strength and resilience. This will help you recognize the power you have and how you can \nuse it in other aspects of your life.\n");
+        Listing listingActivity = new Listing("Listing", "\nThis activity will help you reflect on the good things in your life by having you \nlist as many things as you can in a certain area.\n");
 
 
         // Menu
         bool doloop = true;
         while (doloop)
         {
+            Console.Clear();
             Console.WriteLine("Mindfulness Program:");
             Console.WriteLine("1. Start breathing activity");
             Console.WriteLine("2. Start reflection activity");

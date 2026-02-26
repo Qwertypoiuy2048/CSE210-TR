@@ -70,11 +70,11 @@ public class Breathing : Activity
         int elapsedTime = 0;
         while (elapsedTime < time)
         {
-            Console.WriteLine("Breathe in...  ");
+            Console.Write("Breathe in...  ");
             Animate(_breatheIn);
             elapsedTime += _breatheIn;
             if (elapsedTime >= time) break;
-            Console.WriteLine("Breathe out...  ");
+            Console.Write("\nBreathe out...  ");
             Animate(_breatheOut);
             elapsedTime += _breatheOut;
         }
