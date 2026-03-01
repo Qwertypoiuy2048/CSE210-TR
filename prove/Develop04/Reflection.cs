@@ -37,7 +37,8 @@ public class Reflection : Activity
 
         string prompt = _prompts[_random.Next(_prompts.Count)];
         Console.Write(prompt);
-        Animate(5);
+        Console.WriteLine("\n\nWhen you have something in mind, press enter to continue.");
+        Console.ReadLine();
         Console.WriteLine();
 
         while (elapsedTime < duration)
