@@ -39,7 +39,7 @@ class Program
                     Console.WriteLine("Which type of goal would you like to create? ");
                     input = Console.ReadLine();
                     int goalType = 0;
-                    if (int.TryParse(input, out int goalInput)) {goalType = goalInput - 1;} else {goalType = -1;}
+                    if (int.TryParse(input, out int goalInput)) {goalType = goalInput;} else {goalType = -1;}
                     if (goalType == 1)
                     {
                         Console.WriteLine("What is the name of your goal? ");
@@ -89,7 +89,9 @@ class Program
                     if (!File.Exists(filename))
                     {
                         Console.WriteLine("File does not exist.");
-                        break;
+                        Console.WriteLine("Creating new file.");
+                        File.Create(filename).Close();
+                        
                     }
 
                     Console.WriteLine("Loading...");
@@ -104,7 +106,11 @@ class Program
                     break;
                 case 4:
 
-                    Console.WriteLine("Warning! This will overwrite your current points, but not your goals.");
+                    Console.WriteLine("Warning! This will overwrite your current points and your goals.");
+                    Console.WriteLine("Do you want to continue? (y/n) ");
+                    input = Console.ReadLine();
+                    if (input.ToLower() != "y") {break;}
+                    goalManager.RemoveAllGoals();
                     Console.WriteLine("What is the name of the file you would like to load? ");
                     filename = Console.ReadLine();
                     if (!File.Exists(filename))

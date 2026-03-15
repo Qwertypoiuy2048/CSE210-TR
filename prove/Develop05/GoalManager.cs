@@ -48,4 +48,8 @@ public class GoalManager
     {
         _totalPoints += points;
     }
+    public void RemoveAllGoals()
+    {
+        _goals.Clear();
+    }
 }
