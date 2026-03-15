@@ -10,18 +10,26 @@ public class Checklist : Goal
         _targetTimes = targetTimes;
         _bonusPoints = bonusPoints;
     }
-    public override void RecordEvent()
+    public Checklist(string name, string description, int points, bool isComplete, int targetTimes, int timesCompleted, int bonusPoints) : base(name, description, points, isComplete)
+    {
+        _timesCompleted = 0;
+        _targetTimes = targetTimes;
+        _timesCompleted = timesCompleted;
+        _bonusPoints = bonusPoints;
+    }
+    public override int RecordEvent()
     {
         Console.WriteLine("Checklist goal recorded.");
         _timesCompleted++;
-        AddPoints();
-        if (_timesCompleted >= _targetTimes)
+        if (_timesCompleted == _targetTimes)
         {
              MarkComplete();
                 Console.WriteLine($"Congratulations! You've completed the checklist goal and earned a bonus of {_bonusPoints} points!");
-                AddPoints();
+                return AddBonusPoints();
         }
+        return AddPoints();
     }
+
     public override void Display()
     {
         if ( IsComplete())
@@ -32,5 +40,30 @@ public class Checklist : Goal
         {
             Console.WriteLine($"[ ] { GetName()} ({ GetDescription()}) -- Currently completed {_timesCompleted}/{_targetTimes} times");
         }
+    }
+
+    public int AddBonusPoints()
+    {
+        return _points + _bonusPoints;
+    }
+
+    public override int GetType()
+    {
+        return 3;
+    }
+
+    public override int GetTimesCompleted()
+    {
+        return _timesCompleted;
+    }
+
+    public override int GetTargetTimes()
+    {
+        return _targetTimes;
+    }
+
+    public override int GetBonusPoints()
+    {
+        return _bonusPoints;
     }
 }

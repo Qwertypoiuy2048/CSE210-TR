@@ -14,9 +14,19 @@ public class GoalManager
         _goals.Add(goal);
     }
 
+    public List<Goal> GetGoals()
+    {
+        return _goals;
+    }
+
+    public int GetType(int index)
+    {
+        return _goals[index].GetType();
+    }
 
     public void DisplayGoals()
     {
+        Console.WriteLine("\nGoals:");
         for (int i = 0; i < _goals.Count; i++)
         {
             Console.Write($"{i + 1}. ");
@@ -28,5 +38,14 @@ public class GoalManager
     public int GetPoints()
     {
         return _totalPoints;
+    }
+    public void SetPoints(int points)
+    {
+        _totalPoints = points;
+    }
+
+    public void UpdatePoints(int points)
+    {
+        _totalPoints += points;
     }
 }
