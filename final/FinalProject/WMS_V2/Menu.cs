@@ -19,9 +19,8 @@ class Menu
         while (running)
         {
             Console.WriteLine("\n1. Cast spell");
-            Console.WriteLine("2. Manual no input");
-            Console.WriteLine("3. Manual surge");
-            Console.WriteLine("4. Reset cast spells");
+            Console.WriteLine("2. Manual surge");
+            Console.WriteLine("3. Reset cast spells");
             Console.WriteLine("0. Exit");
             Console.Write("\nSelect an option: ");
 
@@ -36,12 +35,9 @@ class Menu
                     HandleCastSpell();
                     break;
                 case "2":
-                    HandleManualSurge(false);
+                    HandleManualSurge();
                     break;
                 case "3":
-                    HandleManualSurge(true);
-                    break;
-                case "4":
                     _caster.Reset();
                     break;
                 default:
@@ -68,20 +64,34 @@ class Menu
         }
     }
 
-    private void HandleManualSurge(bool manual)
+    private void HandleManualSurge()
     {
-        if (manual) {
+        List<char> types = new List<char> ();
+        List<int> powers = new List<int> ();
         Console.Write("What Types? (B, V, H): ");
-        List<char> types = Console.ReadLine().ToCharArray().ToList();
+        if (!(Console.ReadLine() == ""))
+        {
+            types = Console.ReadLine().ToCharArray().ToList();
+        } else
+        {
+            types = new List<char> {'B', 'V', 'H'};
+        }
 
         Console.Write("What Powers? (1, 2, 3, 4): ");
-        List<int> powers = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+        if (!(Console.ReadLine() == ""))
+        {
+            powers = new List<int>();
+            foreach (char power in Console.ReadLine())
+            {
+                powers.Add(int.Parse(power.ToString()));
+            }
+
+        } else
+        {
+            powers = new List<int> {1,2,3,4};
+        }
 
         Surge surge = _manager.GetFilteredSurge(types, powers);
         surge.Display();
-        } else {
-            Surge surge = _manager.GetSurge();
-            surge.Display();
-        }
     }
 }

@@ -1,6 +1,8 @@
 // =========================
 // Rollable Surge
 // =========================
+using System.Text.RegularExpressions;
+
 class Rollable : Surge
 {
     private int _diceType;
@@ -25,9 +27,14 @@ class Rollable : Surge
 
     public override void Display()
     {
-        Console.WriteLine($"\nLine num: {_id}\nType: {_type}\nSeverity: {_power}\n{_description}");
         
         int result = Roll();
-        Console.WriteLine($"(Rolled: {result})\n\n");
+
+        //! Testing
+        string pattern = @"([0-9]+d[0-9]+)"; // Capture the part you want to keep
+        string replacement = $"$1({result})";
+        string Regexresult = Regex.Replace(_description, pattern, replacement);
+        Console.WriteLine($"\nLine num: {_id}\nType: {_type}\nSeverity: {_power}\n{Regexresult}");
+
     }
 }

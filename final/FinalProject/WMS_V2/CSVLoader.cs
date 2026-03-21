@@ -26,7 +26,11 @@ class CSVLoader
             bool isrollable = Regex.IsMatch(_description, "[0-9]+d[0-9]+");
             if (isrollable)
             {
-                Rollable surge = new Rollable(_id, _type, _power, _description,1,1,1);
+                string pattern = @"([0-9]+d[0-9]+)"; // Capture the part you want to keep
+                int diceNum = int.Parse(Regex.Match(_description, pattern).Groups[1].Value.Split('d')[0]);
+                int diceType = int.Parse(Regex.Match(_description, pattern).Groups[1].Value.Split('d')[1]);
+
+                Rollable surge = new Rollable(_id, _type, _power, _description, diceNum, diceType,0);
                 _surges.Add(surge);
 
             } else
