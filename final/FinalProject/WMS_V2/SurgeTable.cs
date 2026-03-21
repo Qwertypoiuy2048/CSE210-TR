@@ -18,10 +18,8 @@ class SurgeTable
     public Surge GetSurge()
     {
         
-        // tmp int index = dice.Select(surges.Count);
-        // TODO: ask if good
-        // return _surges[index];
-        return _default; //! Temporary
+        int index = _dice.Select(_surges.Count);
+        return _surges[index];
     }
 
     public List<Surge> FilterSurge(List<char> types, List<int> powers)

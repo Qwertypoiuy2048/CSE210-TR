@@ -19,4 +19,5 @@ abstract class Surge
     public abstract void Display();
     public int Power() { return _power; }
     public char Type() { return _type; }
+    public void DisplayDetails() { Console.WriteLine(_description); }
 }

@@ -32,9 +32,11 @@ class Menu
                     running = false;
                     break;
                 case "1":
+                    _manager.CheckHistory();
                     HandleCastSpell();
                     break;
                 case "2":
+                    _manager.CheckHistory();
                     HandleManualSurge();
                     break;
                 case "3":
@@ -71,7 +73,7 @@ class Menu
         Console.Write("What Types? (B, V, H): ");
         if (!(Console.ReadLine() == ""))
         {
-            types = Console.ReadLine().ToCharArray().ToList();
+            types = Console.ReadLine().ToUpper().ToCharArray().ToList();
         } else
         {
             types = new List<char> {'B', 'V', 'H'};

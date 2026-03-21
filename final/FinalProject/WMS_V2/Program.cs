@@ -4,13 +4,14 @@
     {
         Initialize Init = new Initialize();
         string path = Init.GetPath();
+        int HistoryLength = Init.GetHistoryLength();
 
         CSVLoader loader = new CSVLoader();
 
         List<Surge> surges = loader.LoadCSV(path);
 
         SurgeTable table = new SurgeTable(surges);
-        SurgeManager manager = new SurgeManager(table);
+        SurgeManager manager = new SurgeManager(table, HistoryLength);
         Caster caster = new Caster();
         Menu menu = new Menu(manager, caster);
 
@@ -29,10 +30,10 @@ $ Constant -Functioning
 $ CSVLoader -Functioning
 $ DiceRoller -Functioning
 * Initialize - Functioning
-# Menu -WIP
+* Menu -Functioning
 $ Rollable - Functioning
 $ Surge - Functioning
 # SurgeManager - WIP
-* SurgeTable - Mock
+# SurgeTable - WIP
 
 */
