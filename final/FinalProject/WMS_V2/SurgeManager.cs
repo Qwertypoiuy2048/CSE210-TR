@@ -65,5 +65,19 @@ class SurgeManager
     {
         if (_history.Count > _historyLength) _history.RemoveAt(0);
     }
+
+    public void DisplayHistory()
+    {
+        if (_history.Count == 0){ Console.WriteLine("History is empty."); return; }
+        Console.Clear();
+        Console.WriteLine("History:");
+        foreach (Surge surge in _history) surge.Display();
+    }
+
+    public Surge GetSurgeById(int id)
+    {
+        Surge selectedSurge = _surges.GetSurgeById(id);
+        return selectedSurge;
+    }
 }
 

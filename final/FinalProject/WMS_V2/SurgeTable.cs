@@ -37,4 +37,12 @@ class SurgeTable
 
         return result;
     }
+    public Surge GetSurgeById(int id)
+    {
+        foreach (Surge surge in _surges)
+        {
+            if (surge.Id() == id) return surge;
+        }
+        return _default;
+    }
 }

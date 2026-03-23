@@ -30,11 +30,11 @@ class Rollable : Surge
         
         int result = Roll();
 
-        //! Testing
         string pattern = @"([0-9]+d[0-9]+)"; // Capture the part you want to keep
         string replacement = $"$1({result})";
         string Regexresult = Regex.Replace(_description, pattern, replacement);
-        Console.WriteLine($"\nLine num: {_id}\nType: {_type}\nSeverity: {_power}\n{Regexresult}");
+        // // Console.Clear();
+        Console.WriteLine($"\nID: {_id}\nType: {_type}\nSeverity: {_power}\n{Regexresult}");
 
     }
 }

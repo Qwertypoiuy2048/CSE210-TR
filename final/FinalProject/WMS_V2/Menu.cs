@@ -1,6 +1,8 @@
 // =========================
 // Console Menu
 // =========================
+using System.Reflection.Metadata;
+
 class Menu
 {
     private SurgeManager _manager;
@@ -21,6 +23,8 @@ class Menu
             Console.WriteLine("\n1. Cast spell");
             Console.WriteLine("2. Manual surge");
             Console.WriteLine("3. Reset cast spells");
+            Console.WriteLine("4. View history");
+            Console.WriteLine("5. Get surge by id");
             Console.WriteLine("0. Exit");
             Console.Write("\nSelect an option: ");
 
@@ -41,6 +45,14 @@ class Menu
                     break;
                 case "3":
                     _caster.Reset();
+                    Console.Clear();
+                    Console.WriteLine("Cast spells reset.");
+                    break;
+                case "4":
+                    _manager.DisplayHistory();
+                    break;
+                case "5":
+                    HandleGetSurgeById();
                     break;
                 default:
                     Console.WriteLine("Please enter a number on the list.");
@@ -55,6 +67,9 @@ class Menu
         string input = Console.ReadLine();
         int level;
         if (int.TryParse(input, out int Input)) {level = Input;} else {level = 1;}
+        if (Input <= 0) {level = 1;}
+
+        Console.Clear();
 
         bool triggered = _caster.CastSpell(level);
 
@@ -86,9 +101,21 @@ class Menu
         if (!(input == ""))
         {
             powers = new List<int>();
+            int powerTmp = 0;
             foreach (char power in input)
             {
-                powers.Add(int.Parse(power.ToString()));
+                try
+                {
+                    powerTmp = int.Parse(power.ToString());
+                }
+                catch (Exception)
+                {
+                    powerTmp = 0;
+                }
+                finally
+                {
+                    powers.Add(powerTmp);
+                }
             }
 
         } else
@@ -97,6 +124,25 @@ class Menu
         }
 
         Surge surge = _manager.GetFilteredSurge(types, powers);
+        Console.Clear();
+        surge.Display();
+    }
+
+    private void HandleGetSurgeById()
+    {
+        Console.Write("Enter id: ");
+        string input = Console.ReadLine();
+        int id = 0;
+        try
+        {
+            id = int.Parse(input);
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Please enter a number.");
+        }
+        Surge surge = _manager.GetSurgeById(id);
+        Console.Clear();
         surge.Display();
     }
 }

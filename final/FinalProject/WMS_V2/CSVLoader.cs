@@ -15,7 +15,6 @@ class CSVLoader
         _lines = File.ReadAllLines(path);
         foreach (string line in _lines)
         {
-            //tmp Console.WriteLine(line);
 
             _id ++;
             _values = line.Split(',');;
@@ -39,6 +38,7 @@ class CSVLoader
                 _surges.Add(surge);
             }
         }
+        Console.WriteLine("Loaded " + _surges.Count + " surges.");
         return _surges;
     }
 }
