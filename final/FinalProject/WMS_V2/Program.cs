@@ -27,13 +27,13 @@ Status: Runs with errors
 $ Program - Functioning
 $ Caster - Functioning
 $ Constant -Functioning
-$ CSVLoader -Functioning
+* CSVLoader -Functioning
 $ DiceRoller -Functioning
 * Initialize - Functioning
 * Menu -Functioning
 $ Rollable - Functioning
 $ Surge - Functioning
-# SurgeManager - WIP
-# SurgeTable - WIP
+* SurgeManager - Functioning
+* SurgeTable - Functioning
 
 */

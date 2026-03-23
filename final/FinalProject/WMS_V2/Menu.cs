@@ -68,22 +68,25 @@ class Menu
 
     private void HandleManualSurge()
     {
+        string input;
         List<char> types = new List<char> ();
         List<int> powers = new List<int> ();
         Console.Write("What Types? (B, V, H): ");
-        if (!(Console.ReadLine() == ""))
+        input = Console.ReadLine();
+        if ( input != "")
         {
-            types = Console.ReadLine().ToUpper().ToCharArray().ToList();
+            types = input.ToUpper().ToCharArray().ToList();
         } else
         {
             types = new List<char> {'B', 'V', 'H'};
         }
 
         Console.Write("What Powers? (1, 2, 3, 4): ");
-        if (!(Console.ReadLine() == ""))
+        input = Console.ReadLine();
+        if (!(input == ""))
         {
             powers = new List<int>();
-            foreach (char power in Console.ReadLine())
+            foreach (char power in input)
             {
                 powers.Add(int.Parse(power.ToString()));
             }

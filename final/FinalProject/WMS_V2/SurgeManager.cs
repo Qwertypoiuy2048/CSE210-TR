@@ -11,6 +11,7 @@ class SurgeManager
     private List<int> _powers;
     private Constant _default; 
     private int _historyLength;
+    Random rand = new Random();
 
     public SurgeManager(SurgeTable table, int historyLength)
     {
@@ -28,7 +29,6 @@ class SurgeManager
         if (surge == null) return _default;
         if (_history.Contains(surge)) return GetSurge();
 
-        // TODO: ask if good
         surge.DisplayDetails();
         if (Console.ReadLine() != "") return GetSurge();
 
@@ -39,17 +39,26 @@ class SurgeManager
     public Surge GetFilteredSurge(List<char> types, List<int> powers)
     {
         List<Surge> filtered = _surges.FilterSurge(types, powers);
+        Surge selectedSurge = GetSurgeFromList(filtered);
+        return selectedSurge;
+    }
 
-        if (filtered.Count == 0) return _default;
+    public Surge GetSurgeFromList(List<Surge> surgesList)
+    {
+        if (surgesList.Count == 0) return _default;
+        Surge selectedSurge = surgesList[rand.Next(surgesList.Count)];
 
-        Random rand = new Random();
-        Surge surge = filtered[rand.Next(filtered.Count)];
-        if (_history.Contains(surge)) return GetFilteredSurge(types, powers);
+        if (_history.Contains(selectedSurge))
+        { 
+            surgesList.Remove(selectedSurge); Console.WriteLine("Surge already used.");
+            return GetSurgeFromList(surgesList);
+        }
 
-        surge.DisplayDetails();
-        if (Console.ReadLine() != "") return GetFilteredSurge(types, powers);
-        _history.Add(surge);
-        return surge;
+        selectedSurge.DisplayDetails();
+        if (Console.ReadLine() != "") return GetSurgeFromList(surgesList);
+        _history.Add(selectedSurge);
+
+        return selectedSurge;
     }
 
     public void CheckHistory()
