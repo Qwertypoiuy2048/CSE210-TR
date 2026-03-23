@@ -1,12 +1,12 @@
 using System.Text.RegularExpressions;
 class CSVLoader
 {
-    private string[] _lines;
-    private int _id;
-    private char _type;
-    private int _power;
-    private string _description;
-    private string[] _values;
+    private string[] _lines = new string[0];
+    private int _id = 0;
+    private char _type = 'B';
+    private int _power = 0;
+    private string _description = "";
+    private string[] _values = new string[0];
     private List<Surge> _surges = new List<Surge>();
 
     public List<Surge> LoadCSV(string path)
