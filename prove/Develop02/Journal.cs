@@ -24,11 +24,7 @@ public class Journal
         string date_now = theCurrentTime.ToShortDateString();
 
 
-        Entry entry = new Entry();
-        
-        string _date = date_now;
-        string _prompt = prompt;
-        string _input = input;
+        Entry entry = new Entry(date_now, prompt, input);
 
         return entry;
     }

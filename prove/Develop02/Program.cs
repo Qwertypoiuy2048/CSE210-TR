@@ -1,4 +1,3 @@
-using System;
 /*
 Finally got it working
 */
@@ -45,34 +44,38 @@ class Program
 
                 case "3":
                 
-                filename = "myFile.txt";
-                string[] lines = System.IO.File.ReadAllLines(filename);
+                Console.WriteLine("Enter filename: ");
+                filename = Console.ReadLine();
+                string[] lines = File.ReadAllLines(filename);
 
                 foreach (string line in lines)
                 {
-                    string[] parts = line.Split(",");
+                    string[] parts = line.Split("|");
 
-                    string firstName = parts[0];
-                    string lastName = parts[1];
+                    string date = parts[0];
+                    string prompt = parts[1];
+                    string input = parts[2];
+
+                    Entry tmp_entry = new Entry(date, prompt, input);
+                    journal1._entries.Add(tmp_entry);
+
                 }
                 Console.WriteLine("\nJournal Loaded!\n");
                 break;
 
 
                 case "4":
-                // Get filename, write to file, CSV use "," as separator
+                // Get filename, write to file, use "|" as separator
 
-                filename = "myFile.txt";
+                Console.WriteLine("Enter filename: ");
+                filename = Console.ReadLine();
                 using (StreamWriter outputFile = new StreamWriter(filename))
                 {
                     // You can add text to the file with the WriteLine method
                     foreach (Entry i in journal1._entries)
                     {
-                        
+                        outputFile.WriteLine($"{i._date}|{i._prompt}|{i._prompt}");
                     }
-                    Entry a = journal1._entries[0];
-                    
-                    outputFile.WriteLine($"{a._date},{a._prompt},{a._prompt}");
                 }
                 Console.WriteLine("\nJournal Saved!\n");
                 break;
@@ -89,14 +92,5 @@ class Program
                 break;
             }
         }
-    }
-
-    public void Save()
-    {
-        
-    }
-    public void Load()
-    {
-        
     }
 }
