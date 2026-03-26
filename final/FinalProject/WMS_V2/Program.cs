@@ -21,9 +21,7 @@
 
 
 /*
-
-Status: Runs with errors
-
+Status: Fully Functioning, Testing for bugs
 $ Program - Functioning
 $ Caster - Functioning
 $ Constant -Functioning
@@ -35,5 +33,4 @@ $ Rollable - Functioning
 $ Surge - Functioning
 * SurgeManager - Functioning
 * SurgeTable - Functioning
-
 */

@@ -16,8 +16,8 @@ class CSVLoader
         foreach (string line in _lines)
         {
 
-            _id ++;
-            _values = line.Split(',');;
+            _id++;
+            _values = line.Split(',');
             _type = char.Parse(_values[0]);
             _power = int.Parse(_values[1]);
             _description = _values[2];
@@ -29,10 +29,11 @@ class CSVLoader
                 int diceNum = int.Parse(Regex.Match(_description, pattern).Groups[1].Value.Split('d')[0]);
                 int diceType = int.Parse(Regex.Match(_description, pattern).Groups[1].Value.Split('d')[1]);
 
-                Rollable surge = new Rollable(_id, _type, _power, _description, diceNum, diceType,0);
+                Rollable surge = new Rollable(_id, _type, _power, _description, diceNum, diceType, 0);
                 _surges.Add(surge);
 
-            } else
+            }
+            else
             {
                 Constant surge = new Constant(_id, _type, _power, _description);
                 _surges.Add(surge);

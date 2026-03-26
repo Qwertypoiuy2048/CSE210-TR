@@ -5,7 +5,7 @@ class SurgeTable
 {
     private List<Surge> _surges;
     private DiceRoller _dice;
-    private Constant _default; 
+    private Constant _default;
 
     public SurgeTable(List<Surge> surges)
     {
@@ -17,7 +17,6 @@ class SurgeTable
 
     public Surge GetSurge()
     {
-        
         int index = _dice.Select(_surges.Count);
         return _surges[index];
     }

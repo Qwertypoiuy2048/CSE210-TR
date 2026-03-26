@@ -17,22 +17,22 @@ abstract class Surge
     }
 
     public abstract void Display();
-    public int Power() 
-    { 
-        return _power; 
+    public int Power()
+    {
+        return _power;
     }
-    public char Type() 
-    { 
-        return _type; 
+    public char Type()
+    {
+        return _type;
     }
     public int Id()
     {
         return _id;
     }
-    public void DisplayDetails() 
-    { 
-        Console.WriteLine(); 
-        Console.WriteLine(_description); 
-        Console.WriteLine("Enter to continue, anything else to reroll"); 
+    public void DisplayDetails()
+    {
+        Console.WriteLine();
+        Console.WriteLine(_description);
+        Console.WriteLine("Enter to continue, anything else to reroll");
     }
 }

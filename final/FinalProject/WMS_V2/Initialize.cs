@@ -12,13 +12,13 @@ class Initialize
         _lines = File.ReadAllLines(_settingsFilePath);
 
     }
-    public string GetPath() 
-    { 
+    public string GetPath()
+    {
         Console.WriteLine("\nPath: " + _lines[0]);
         return _lines[0];
     }
-    public int GetHistoryLength() 
-    { 
+    public int GetHistoryLength()
+    {
         Console.WriteLine("History Length: " + _lines[1]);
         return int.Parse(_lines[1]);
     }

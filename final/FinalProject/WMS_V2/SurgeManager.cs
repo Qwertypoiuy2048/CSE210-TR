@@ -9,7 +9,7 @@ class SurgeManager
     private List<Surge> _history;
     private List<char> _types;
     private List<int> _powers;
-    private Constant _default; 
+    private Constant _default;
     private int _historyLength;
     Random rand = new Random();
 
@@ -17,8 +17,8 @@ class SurgeManager
     {
         _surges = table;
         _history = new List<Surge>();
-        _types = new List<char> {'B', 'V', 'H'};
-        _powers = new List<int> {1,2,3,4};
+        _types = new List<char> { 'B', 'V', 'H' };
+        _powers = new List<int> { 1, 2, 3, 4 };
         _default = new Constant(0, 'B', 1, "No surges were found. Please try again.");
         _historyLength = historyLength;
     }
@@ -49,7 +49,7 @@ class SurgeManager
         Surge selectedSurge = surgesList[rand.Next(surgesList.Count)];
 
         if (_history.Contains(selectedSurge))
-        { 
+        {
             surgesList.Remove(selectedSurge); Console.WriteLine("Surge already used.");
             return GetSurgeFromList(surgesList);
         }
@@ -68,7 +68,7 @@ class SurgeManager
 
     public void DisplayHistory()
     {
-        if (_history.Count == 0){ Console.WriteLine("History is empty."); return; }
+        if (_history.Count == 0) { Console.WriteLine("History is empty."); return; }
         Console.Clear();
         Console.WriteLine("History:");
         foreach (Surge surge in _history) surge.Display();
